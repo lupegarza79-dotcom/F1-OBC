@@ -1,0 +1,151 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* F1 OnBoard Solutions — design system.
+   Aviation navy + signal amber. Light, premium, confident. */
+
+@layer base {
+  :root {
+    --background: 210 40% 99%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    /* Aviation navy */
+    --primary: 222 55% 14%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 215 30% 95%;
+    --secondary-foreground: 222 47% 14%;
+
+    --muted: 215 25% 95%;
+    --muted-foreground: 215 18% 42%;
+
+    /* Signal amber — used sparingly for primary CTAs */
+    --accent: 38 96% 54%;
+    --accent-foreground: 222 60% 10%;
+
+    --destructive: 0 78% 56%;
+    --destructive-foreground: 210 40% 98%;
+
+    --success: 152 62% 40%;
+    --success-foreground: 0 0% 100%;
+
+    --warn: 38 96% 50%;
+    --warn-foreground: 30 40% 15%;
+
+    --danger: 0 78% 56%;
+    --danger-foreground: 0 0% 100%;
+
+    --border: 215 25% 90%;
+    --input: 215 25% 90%;
+    --ring: 222 55% 24%;
+
+    --radius: 0.875rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html, body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: 'cv11', 'ss01', 'ss03';
+  }
+
+  .font-mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+}
+
+@layer utilities {
+  .brand-hero {
+    background:
+      radial-gradient(1200px 600px at 85% -10%, hsl(38 96% 54% / 0.16), transparent 60%),
+      radial-gradient(900px 500px at -10% 0%, hsl(222 80% 30% / 0.14), transparent 60%),
+      linear-gradient(180deg, hsl(222 55% 11%) 0%, hsl(222 60% 8%) 100%);
+  }
+
+  .brand-grid {
+    background-image:
+      linear-gradient(hsl(210 30% 90%) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(210 30% 90%) 1px, transparent 1px);
+    background-size: 48px 48px;
+    background-position: -1px -1px;
+  }
+
+  .ticket-divider {
+    background-image: radial-gradient(circle, hsl(var(--border)) 1.5px, transparent 1.5px);
+    background-size: 12px 1px;
+    background-repeat: repeat-x;
+  }
+
+  .glow-amber {
+    box-shadow: 0 8px 30px -8px hsl(38 96% 54% / 0.55), inset 0 1px 0 hsl(0 0% 100% / 0.5);
+  }
+
+  .pulse-dot::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 9999px;
+    background: currentColor;
+    opacity: 0.4;
+    animation: pulse-ring 1.6s ease-out infinite;
+  }
+
+  @keyframes pulse-ring {
+    0% { transform: scale(0.8); opacity: 0.5; }
+    80%, 100% { transform: scale(2.2); opacity: 0; }
+  }
+
+  @keyframes plane-fly {
+    0% { transform: translateX(-6%) translateY(2%); }
+    50% { transform: translateX(50%) translateY(-3%); }
+    100% { transform: translateX(106%) translateY(2%); }
+  }
+  .animate-plane { animation: plane-fly 7s ease-in-out infinite; }
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  .shimmer {
+    background: linear-gradient(90deg, transparent 0%, hsl(0 0% 100% / 0.4) 50%, transparent 100%);
+    background-size: 200% 100%;
+    animation: shimmer 2s linear infinite;
+  }
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-rise { animation: rise 0.4s ease-out both; }
+
+  .stagger > * { animation: rise 0.5s ease-out both; }
+  .stagger > *:nth-child(1) { animation-delay: 0.02s; }
+  .stagger > *:nth-child(2) { animation-delay: 0.08s; }
+  .stagger > *:nth-child(3) { animation-delay: 0.14s; }
+  .stagger > *:nth-child(4) { animation-delay: 0.2s; }
+  .stagger > *:nth-child(5) { animation-delay: 0.26s; }
+  .stagger > *:nth-child(6) { animation-delay: 0.32s; }
+  .stagger > *:nth-child(7) { animation-delay: 0.38s; }
+  .stagger > *:nth-child(8) { animation-delay: 0.44s; }
+}

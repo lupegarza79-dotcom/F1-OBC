@@ -1,0 +1,10 @@
+{
+  "$schema": "https://rork.com/schema/rork.json",
+  "apps": [
+    {
+      "name": "F1 OnBoard Solutions",
+      "path": "web",
+      "framework": "web"
+    }
+  ]
+}
